@@ -36,9 +36,10 @@ const Add = () => {
                 category:"Salad"
             })
             setImage(false)
+            alert("Food item added")
         }
         else{
-
+            alert("Something went wrong! Please try again later")
         }
     }
 
