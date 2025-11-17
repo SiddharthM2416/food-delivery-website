@@ -1,0 +1,9 @@
+Changes made to fix the navbar profile dropdown CSS issues:
+
+1. Navbar.css:
+   - Styled .nav-profile-dropdown hr with:
+     - height: 1px;
+     - border: none;
+     - background-color: black;
+     - margin: 5px 0;
+     To make the horizontal line visible and properly spaced.
