@@ -1,10 +1,9 @@
 import React,{ useEffect, useState } from 'react'
 import './List.css'
 import axios from 'axios';
-const List = () => {
+const List = ({url}) => {
 
   const [list,setList] = useState([]);
-  const url = "http://localhost:4000"
   const fetchList = async () =>{
     const response = await axios.get(`${url}/api/food/list`)
     console.log(response.data)
