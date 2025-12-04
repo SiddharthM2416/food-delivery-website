@@ -50,4 +50,15 @@ const getCart = async (req,res) => {
     }
 }
 
-module.exports = {addToCart,removeFromCart,getCart}
+const clearCart = async (req,res) => {
+    try {
+        let cartData = {}
+        await userModel.findByIdAndUpdate(req.body.userId,{cartData})
+        res.json({success:true,message:"Cart Cleared"})
+    } catch (error) {
+        console.log(error)
+        res.json({success:false,message:"Error"})
+    }
+}
+
+module.exports = {addToCart,removeFromCart,getCart,clearCart}

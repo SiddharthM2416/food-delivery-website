@@ -3,27 +3,30 @@ import './PlaceOrder.css'
 import { StoreContext } from '../../context/storeContext'
 const PlaceOrder = () => {
 
-  const {getTotalCartAmount} = useContext(StoreContext)
+  const {getTotalCartAmount,clearCart} = useContext(StoreContext)
 
   return (
-    <form className='place-order'>
+    <form className='place-order' onSubmit={()=>{
+      alert("Order placed")
+      clearCart()
+    }}>
       <div className="place-order-left">
         <p className="title">Delivery Information</p>
         <div className="multi-fields">
-          <input type="text" placeholder='First name' />
-          <input type="text" placeholder='Last name'/>
+          <input required type="text" placeholder='First name' />
+          <input required type="text" placeholder='Last name'/>
         </div>
-        <input type="email" placeholder='Email address'/>
-        <input type="text" placeholder='Street'/>
+        <input required type="email" placeholder='Email address'/>
+        <input required type="text" placeholder='Street'/>
         <div className="multi-fields">
-          <input type="text" placeholder='City' />
-          <input type="text" placeholder='State'/>
+          <input required type="text" placeholder='City' />
+          <input required type="text" placeholder='State'/>
         </div>
         <div className="multi-fields">
-          <input type="text" placeholder='Zipcode' />
-          <input type="text" placeholder='Country'/>
+          <input required type="text" placeholder='Zipcode' />
+          <input required type="text" placeholder='Country'/>
         </div>
-        <input type="text" placeholder='Phone'/>
+        <input required type="text" placeholder='Phone'/>
       </div>
 
       <div className="place-order-right">
@@ -45,7 +48,7 @@ const PlaceOrder = () => {
               <b>${getTotalCartAmount()===0?0:getTotalCartAmount()+2}</b>
             </div>
           </div>
-          <button>PROCEED TO PAYMENT</button>
+          <button type='submit'>PLACE ORDER</button>
         </div>
       </div>
     </form>

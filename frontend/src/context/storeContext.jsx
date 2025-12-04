@@ -38,6 +38,16 @@ const StoreContextProvider = (props) => {
         }
     }
 
+    const clearCart = async () => {
+        if(token){
+            try {
+                await axios.post(url+"/api/cart/clear",{},{headers:{token}})
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
+
     const getTotalCartAmount = () => {
         let totalAmount = 0;
         for(const item in cartItems){
@@ -96,7 +106,8 @@ const StoreContextProvider = (props) => {
         getTotalCartAmount,
         url,
         token,
-        setToken
+        setToken,
+        clearCart
     }
     return(
         <StoreContext.Provider value={contextValue}>
