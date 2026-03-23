@@ -5,13 +5,14 @@ const List = ({url}) => {
 
   const [list,setList] = useState([]);
   const fetchList = async () =>{
-    const response = await axios.get(`${url}/api/food/list`)
-    console.log(response.data)
-    if (response.data.success){
-      setList(response.data.data)
-    }
-    else{
-      alert("Error")
+    try {
+      const response = await axios.get(`${url}/api/food/list`)
+      console.log(response.data)
+      if (response.data.success){
+        setList(response.data.data)
+      }
+    } catch (error) {
+      console.log(error)
     }
   }
 
@@ -43,7 +44,7 @@ const List = ({url}) => {
         </div>
         {list.map((item,index)=>{
           return(
-            <div key={index} className='list-table-format'>
+            <div key={item._id} className='list-table-format'>
               <img src={`${url}/images/`+item.image} alt="food" />
               <p>{item.name}</p>
               <p>{item.category}</p>
